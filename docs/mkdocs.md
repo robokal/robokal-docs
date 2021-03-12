@@ -1,4 +1,4 @@
-# Using Mkdocs
+# Mkdocs
 
 MkDocs is a fastand simple static site generator which can help you build your project documentation. Documentation source files are written in Markdown, and configured with a single YAML configuration file.
 
