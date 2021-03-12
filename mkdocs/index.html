@@ -385,11 +385,28 @@ Run: http://127.0.0.1:8000
 </li>
 </ol>
 <h2 id="plugins">Plugins</h2>
-<p>&nbsp;
-- search plugin should call once. It is a default plugin and if you declare plugins you should declare search.</p>
-<h3 id="create-table">Create Table</h3>
+<ul>
+<li>search plugin should call once. It is a default plugin and if you declare plugins you should declare search.</li>
+</ul>
 <p>&nbsp;</p>
+<h3 id="create-table">Create Table</h3>
 <p>In your MarkDown file, create a table as:</p>
+<pre><code>| First Column  | Second Column  | Third Column  |
+|---------------|:--------------:|---------------|
+| Ex1           | Ex2            | Ex3           |
+</code></pre>
+<ul>
+<li>In order to center the content, use :---: as shown in Second Column</li>
+</ul>
+<p>Install the plugin:</p>
+<pre><code>pip install mkdocs-bootstrap-tables-plugin
+</code></pre>
+<p>Add the plugin to mkdocs.yml file:</p>
+<pre><code>plugins:
+    - search
+    - bootstrap-tables
+</code></pre>
+<p>You will get the table as displayed:</p>
 <table>
 <thead>
 <tr>
@@ -406,20 +423,8 @@ Run: http://127.0.0.1:8000
 </tr>
 </tbody>
 </table>
-<ul>
-<li>In order to center the content, use :---: as shown in Second Column</li>
-</ul>
-<p>Install the plugin:</p>
-<pre><code>pip install mkdocs-bootstrap-tables-plugin
-</code></pre>
-<p>Add the plugin to mkdocs.yml file:</p>
-<pre><code>plugins:
-    - search
-    - bootstrap-tables
-</code></pre>
 <p>&nbsp;</p>
 <h3 id="create-mermaid-graphs">Create Mermaid Graphs</h3>
-<p>&nbsp;</p>
 <p>In your MarkDown file, create an example graph:</p>
 <pre><code class="language-mermaid">
 graph LR
