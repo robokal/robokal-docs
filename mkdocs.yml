@@ -1,2 +1,20 @@
-site_name: My Docs
-theme: readthedocs
+site_name: Learning Robotics
+site_url: https://robokal.github.io
+
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  language: en
+  include_sidebar: true
+  #favicon: assets/img/icon.png
+  #logo: assets/img/logo.png
+  feature:
+    tabs: false
+  palette:
+    primary: 'cyan'
+    accent: 'cyan'
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
+
+copyright: "Copyright 2021 Robokal"
