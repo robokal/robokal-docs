@@ -32,14 +32,14 @@
 
     
       
-        <title>Learning Robotics</title>
+        <title>Apt cacher ng - Learning Robotics</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
         
           
           
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#apt-cacher-ng" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              
+              Apt cacher ng
             
           </span>
         </div>
@@ -187,7 +192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Welcome to Learning Robotics
       </a>
     </li>
@@ -200,11 +205,63 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="apt-cacher-ng/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Apt cacher ng
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Apt cacher ng
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    Client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-cacher" class="md-nav__link">
+    Check your cacher:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -217,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mkdocs/" class="md-nav__link">
+      <a href="../mkdocs/" class="md-nav__link">
         Mkdocs
       </a>
     </li>
@@ -231,11 +288,81 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#server" class="md-nav__link">
+    Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    Client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-cacher" class="md-nav__link">
+    Check your cacher:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                <h1 id="apt-cacher-ng">Apt cacher ng</h1>
+<p>It is a package to create a local cache of the Debian mirrors. </p>
+<h2 id="server">Server</h2>
+<p>To get started you should create a server by installing the package:</p>
+<pre><code>apt install apt-cacher-ng
+</code></pre>
+<p>change the cache directory in the configuration file:</p>
+<pre><code>vim /etc/apt-cacher-ng/acng.conf
+</code></pre>
+<p>In the line of CacheDir choose your directory path.</p>
+<h2 id="client">Client</h2>
+<p>Define the client configuration in order to know about the proxy:</p>
+<pre><code>echo 'Acquire::http { Proxy &quot;http://&lt;server_ip&gt;:3142&quot;; }' | sudo tee -a /etc/apt/apt.conf.d/proxy
+</code></pre>
+<h2 id="check-your-cacher">Check your cacher:</h2>
+<p>In the client machine: </p>
+<p><code>sudo apt update
+sudo apt install &lt;package_name&gt;</code></p>
+<p>you should be able to see the files in the server machine (according to CacheDir in the acng.conf file).</p>
+                
+              
+              
+                
+
 
               
             </article>
@@ -272,15 +399,15 @@
 
     </div>
     
-      <script src="assets/javascripts/vendor.18f0862e.min.js"></script>
-      <script src="assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "",
+          base: "..",
           features: [],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
