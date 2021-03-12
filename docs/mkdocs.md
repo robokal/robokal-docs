@@ -26,18 +26,20 @@ MkDocs is a fastand simple static site generator which can help you build your p
 &nbsp;
 
 ## Plugins 
-&nbsp;
+
+
 - search plugin should call once. It is a default plugin and if you declare plugins you should declare search.
 
-### Create Table
 &nbsp;
+### Create Table
+
 
 In your MarkDown file, create a table as:
-
+```
 | First Column  | Second Column  | Third Column  |
 |---------------|:--------------:|---------------|
 | Ex1           | Ex2            | Ex3           |
-
+```
 
 
 - In order to center the content, use :---: as shown in Second Column
@@ -53,9 +55,16 @@ plugins:
     - search
     - bootstrap-tables
 ```
+You will get the table as displayed:
+
+| First Column  | Second Column  | Third Column  |
+|---------------|:--------------:|---------------|
+| Ex1           | Ex2            | Ex3           |
+
+
 &nbsp;
 ### Create Mermaid Graphs
-&nbsp;
+
 
 In your MarkDown file, create an example graph:
 
