@@ -32,7 +32,7 @@
 
     
       
-        <title>Apt cacher ng - Learning Robotics</title>
+        <title>Aptly - Learning Robotics</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#apt-cacher-ng" class="md-skip">
+        <a href="#aptly" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Apt cacher ng
+              Aptly
             
           </span>
         </div>
@@ -205,63 +205,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Apt cacher ng
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../apt-cacher-ng/" class="md-nav__link">
         Apt cacher ng
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
-    Client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-your-cacher" class="md-nav__link">
-    Check your cacher:
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -272,11 +220,20 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../aptly/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Aptly
       </a>
+      
     </li>
   
 
@@ -314,35 +271,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
-    Client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-your-cacher" class="md-nav__link">
-    Check your cacher:
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -354,25 +282,11 @@
               
                 
                 
-                <h1 id="apt-cacher-ng">Apt cacher ng</h1>
-<p>It is a package to create a local cache of the Debian mirrors. </p>
-<h2 id="server">Server</h2>
-<p>To get started you should create a server by installing the package:</p>
-<pre><code>apt install apt-cacher-ng
-</code></pre>
-<p>change the cache directory in the configuration file:</p>
-<pre><code>vim /etc/apt-cacher-ng/acng.conf
-</code></pre>
-<p>In the line of CacheDir choose your directory path.</p>
-<h2 id="client">Client</h2>
-<p>Define the client configuration in order to know about the proxy:</p>
-<pre><code>echo 'Acquire::http { Proxy &quot;http://&lt;server_ip&gt;:3142&quot;; }' | sudo tee -a /etc/apt/apt.conf.d/proxy
-</code></pre>
-<h2 id="check-your-cacher">Check your cacher:</h2>
-<p>In the client machine: </p>
-<p><code>sudo apt update
-sudo apt install &lt;package_name&gt;</code></p>
-<p>you should be able to see the files in the server machine (according to CacheDir in the acng.conf file).</p>
+                <h1 id="aptly">Aptly</h1>
+<p>When trying to update several computers in local network (without internet connection) aptly is a convinient solution.</p>
+<p>You can either create a mirror of remote repositories or build your desired repository from deb files.
+Aptly snapshot option allows you to transition your package environment to a new version, or rollback to a previous version.</p>
+<p>After publishing a snapshot, you can use apt tool in order to install packages.</p>
                 
               
               
