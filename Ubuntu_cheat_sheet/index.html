@@ -32,14 +32,14 @@
 
     
       
-        <title>Learning Robotics</title>
+        <title>Ubuntu cheat sheet - Learning Robotics</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
         
           
           
@@ -79,6 +79,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ubuntu-cheat-sheet" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              
+              Ubuntu cheat sheet
             
           </span>
         </div>
@@ -187,7 +192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Welcome to Learning Robotics
       </a>
     </li>
@@ -200,11 +205,63 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="Ubuntu_cheat_sheet/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ubuntu cheat sheet
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Ubuntu cheat sheet
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installations" class="md-nav__link">
+    Installations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-a-file" class="md-nav__link">
+    Open a file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -217,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="apt-cacher-ng/" class="md-nav__link">
+      <a href="../apt-cacher-ng/" class="md-nav__link">
         Apt cacher ng
       </a>
     </li>
@@ -232,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="aptly/" class="md-nav__link">
+      <a href="../aptly/" class="md-nav__link">
         Aptly
       </a>
     </li>
@@ -247,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mkdocs/" class="md-nav__link">
+      <a href="../mkdocs/" class="md-nav__link">
         Mkdocs
       </a>
     </li>
@@ -261,11 +318,94 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installations" class="md-nav__link">
+    Installations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networks" class="md-nav__link">
+    Networks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-a-file" class="md-nav__link">
+    Open a file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                <h1 id="ubuntu-cheat-sheet">Ubuntu cheat sheet</h1>
+<p>man sed                                  # get manual of a command, for example sed command
+ps -aux | grep <process_name>            # check all running processes
+lspci                                    # check GPU version
+lsb_release -a                           # check ubuntu version 
+grep -r "word" /path/to/files            # find a word inside all files
+uptime                                   # check computer running time
+dmesg                                    # show usb connections
+find . -iname <file_name>                # find a file
+which <file_name>                        # find the file path
+chown -Rfv user:user /tmp                # change user and group owner of /tmp (or any folder/file)
+df -h                                    # show the free disk (-h= human readable, -a= all, even if the disk is 0)
+sudo tcpdump -n -i lo <protocol_name>    # check connections (-n= no resolve, lo= local card, protocol_name= arp,icmp etc.)
+                                           for example: sudo tcpdump -n -i any icmp = check connection for any card</p>
+<h2 id="installations">Installations</h2>
+<p>dpkg -l | grep <package_name>            # check for dpkg installations
+dpkg -i <file_name>.deb                  # install deb file
+cat /etc/apt/sources.list                # get link to all ubuntu installations and network deb files
+cat /etc/hosts                           # file for changing IP and for adding external server machine</p>
+<h2 id="networks">Networks</h2>
+<p>ifconfig                                 # check my IP
+ip addr                                  # see all IP addresses, as ifconfig
+sudo ifconfig eth0:1 <new_ip>/24         # add virtual IP address. 24 is for subnet 255.255.255.0
+netstat -nau                             # check udp processes
+netstat -naup                            # check udp processes with details
+netstat -natp                            # check tcp processes
+arp -n                                   # check connection history</p>
+<h2 id="open-a-file">Open a file</h2>
+<p>code <file_name>                         # open visual studio code IDE
+vim <file_name>                          # terminal with edit option
+less <file_name>                         # terminal - show content one page at a time
+cat <file_name>                          # terminal short view</p>
+                
+              
+              
+                
+
 
               
             </article>
@@ -302,15 +442,15 @@
 
     </div>
     
-      <script src="assets/javascripts/vendor.18f0862e.min.js"></script>
-      <script src="assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "",
+          base: "..",
           features: [],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
