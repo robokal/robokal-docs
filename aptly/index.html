@@ -230,9 +230,45 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Aptly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Aptly
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-key" class="md-nav__link">
+    Create a key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-repository" class="md-nav__link">
+    Use the repository
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -271,6 +307,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-key" class="md-nav__link">
+    Create a key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-repository" class="md-nav__link">
+    Use the repository
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -287,6 +345,74 @@
 <p>You can either create a mirror of remote repositories or build your desired repository from deb files.
 Aptly snapshot option allows you to transition your package environment to a new version, or rollback to a previous version.</p>
 <p>After publishing a snapshot, you can use apt tool in order to install packages.</p>
+<h2 id="create-a-key">Create a key</h2>
+<p>In your home directory create a GPG2 batch file:</p>
+<pre><code>cat &gt;~/gpg2_generate_batch_file.txt &lt;&lt;EOF
+%echo Generating a default key
+Key-Type: RSA
+Key-Length: 4096
+Name-Real: MyCompanyName
+Name-Comment: aptly key no passphrase
+Name-Email: info@mycompanyname.com
+Expire-Date: 0
+%no-protection
+# Do a commit here, so that we can later print &quot;done&quot; :-)
+%commit
+%echo done
+EOF
+</code></pre>
+<p>Generate a general key:</p>
+<pre><code>gpg --batch --gen-key ~/gpg2_generate_batch_file.txt
+</code></pre>
+<p>This key will allow us to sign and export our repository. First we need to check our key:
+``` gpg --list-key</p>
+<pre><code>The key will see as follow:
+```gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+/home/robokal/.gnupg/pubring.kbx
+------------------------------
+pub   rsa4096 2021-03-20 [SCEA]
+      152B12FDCCEB6DCD186430F56FBBF490B10AB3CB
+uid           [ultimate] MyCompanyName (aptly key no passphrase) &lt;info@mycompanyname.com&gt;
+</code></pre>
+<p>At last, we should export the key:
+```gpg --output ~/.aptly/public/key.pub --armor --export 152B12FDCCEB6DCD186430F56FBBF490B10AB3CB</p>
+<pre><code>
+## Publish a reposiroty
+
+Create a repository:
+```aptly repo create repo_name
+</code></pre>
+<p>Add packages to your repository (for deb files):</p>
+<p>```aptly repo add repo_name ~/Downloads/folder_name</p>
+<pre><code>
+Create a snapshot:
+
+```aptly snapshot create snap_name from repo repo_name
+</code></pre>
+<p>Publish the repository, choose the component and the distribution:
+```sudo aptly publish snapshot -component=main -distribution=focal snap_name</p>
+<pre><code>
+Finally, serve the published repository:
+```aptly serve
+</code></pre>
+<h2 id="use-the-repository">Use the repository</h2>
+<p>In other machine, you can use the published repository to install the packages.</p>
+<p>First, add the key. Insert the IP of the serve machine:
+```wget http://192.168.1.14:8080/key.pub
+sudo apt-key add key.pub</p>
+<pre><code>
+Check your machine keys:
+
+```apt-key list
+</code></pre>
+<p>Now you can update your system. 
+Add to the file /etc/apt/sources.list (according to the desired serve IP, distribution and component):
+deb http://192.168.1.14:8080/ubuntu focal main</p>
+<p>At last, you can update your machine:
+<code>sudo apt update
+sudo apt install &lt;package_name&gt;</code></p>
                 
               
               
