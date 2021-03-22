@@ -260,6 +260,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#publish-a-reposiroty" class="md-nav__link">
+    Publish a reposiroty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#use-the-repository" class="md-nav__link">
     Use the repository
   </a>
@@ -321,6 +328,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#publish-a-reposiroty" class="md-nav__link">
+    Publish a reposiroty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#use-the-repository" class="md-nav__link">
     Use the repository
   </a>
@@ -364,10 +378,11 @@ EOF
 <p>Generate a general key:</p>
 <pre><code>gpg --batch --gen-key ~/gpg2_generate_batch_file.txt
 </code></pre>
-<p>This key will allow us to sign and export our repository. First we need to check our key:
-``` gpg --list-key</p>
-<pre><code>The key will see as follow:
-```gpg: checking the trustdb
+<p>This key will allow us to sign and export our repository. First we need to check our key:</p>
+<pre><code>gpg --list-key
+</code></pre>
+<p>The key will look as follow:</p>
+<pre><code>gpg: checking the trustdb
 gpg: marginals needed: 3  completes needed: 1  trust model: pgp
 gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
 /home/robokal/.gnupg/pubring.kbx
@@ -376,43 +391,41 @@ pub   rsa4096 2021-03-20 [SCEA]
       152B12FDCCEB6DCD186430F56FBBF490B10AB3CB
 uid           [ultimate] MyCompanyName (aptly key no passphrase) &lt;info@mycompanyname.com&gt;
 </code></pre>
-<p>At last, we should export the key:
-```gpg --output ~/.aptly/public/key.pub --armor --export 152B12FDCCEB6DCD186430F56FBBF490B10AB3CB</p>
-<pre><code>
-## Publish a reposiroty
-
-Create a repository:
-```aptly repo create repo_name
+<p>At last, we should export the key:</p>
+<pre><code>gpg --output ~/.aptly/public/key.pub --armor --export 152B12FDCCEB6DCD186430F56FBBF490B10AB3CB
+</code></pre>
+<h2 id="publish-a-reposiroty">Publish a reposiroty</h2>
+<p>Create a repository:</p>
+<pre><code>aptly repo create repo_name
 </code></pre>
 <p>Add packages to your repository (for deb files):</p>
-<p>```aptly repo add repo_name ~/Downloads/folder_name</p>
-<pre><code>
-Create a snapshot:
-
-```aptly snapshot create snap_name from repo repo_name
+<pre><code>aptly repo add repo_name ~/Downloads/folder_name
 </code></pre>
-<p>Publish the repository, choose the component and the distribution:
-```sudo aptly publish snapshot -component=main -distribution=focal snap_name</p>
-<pre><code>
-Finally, serve the published repository:
-```aptly serve
+<p>Create a snapshot:</p>
+<pre><code>aptly snapshot create snap_name from repo repo_name
+</code></pre>
+<p>Publish the repository, choose the component and the distribution:</p>
+<pre><code>sudo aptly publish snapshot -component=main -distribution=focal snap_name
+</code></pre>
+<p>Finally, serve the published repository:</p>
+<pre><code>aptly serve
 </code></pre>
 <h2 id="use-the-repository">Use the repository</h2>
 <p>In other machine, you can use the published repository to install the packages.</p>
-<p>First, add the key. Insert the IP of the serve machine:
-```wget http://192.168.1.14:8080/key.pub
-sudo apt-key add key.pub</p>
-<pre><code>
-Check your machine keys:
-
-```apt-key list
+<p>First, add the key. Insert the IP of the serve machine:</p>
+<pre><code>wget http://192.168.1.14:8080/key.pub
+sudo apt-key add key.pub
+</code></pre>
+<p>Check your machine keys:</p>
+<pre><code>apt-key list
 </code></pre>
 <p>Now you can update your system. 
-Add to the file /etc/apt/sources.list (according to the desired serve IP, distribution and component):
-deb http://192.168.1.14:8080/ubuntu focal main</p>
-<p>At last, you can update your machine:
-<code>sudo apt update
-sudo apt install &lt;package_name&gt;</code></p>
+Add to the file /etc/apt/sources.list (according to the desired serve IP, distribution and component):</p>
+<p>deb http://192.168.1.14:8080/ubuntu focal main</p>
+<p>At last, you can update your machine:</p>
+<pre><code>sudo apt update
+sudo apt install &lt;package_name&gt;
+</code></pre>
                 
               
               
