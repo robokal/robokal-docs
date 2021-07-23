@@ -32,7 +32,7 @@
 
     
       
-        <title>Apt cacher ng - Learning Robotics</title>
+        <title>CanBus - Controller Area Network - Learning Robotics</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#apt-cacher-ng" class="md-skip">
+        <a href="#canbus-controller-area-network" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Apt cacher ng
+              CanBus - Controller Area Network
             
           </span>
         </div>
@@ -235,63 +235,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Apt cacher ng
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../apt-cacher-ng/" class="md-nav__link">
         Apt cacher ng
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
-    Client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-your-cacher" class="md-nav__link">
-    Check your cacher:
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -317,11 +265,70 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../canbus/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CanBus - Controller Area Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         CanBus - Controller Area Network
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activation-on-jetson-tx2" class="md-nav__link">
+    Activation on jetson (TX2):
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-dbc-file-canbus-databases" class="md-nav__link">
+    Generate dbc file (canbus databases)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-send-and-receive-can-messages" class="md-nav__link">
+    Communication - send and receive can messages
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -366,22 +373,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server
+  <a href="#installation" class="md-nav__link">
+    Installation:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#client" class="md-nav__link">
-    Client
+  <a href="#activation-on-jetson-tx2" class="md-nav__link">
+    Activation on jetson (TX2):
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-cacher" class="md-nav__link">
-    Check your cacher:
+  <a href="#generate-dbc-file-canbus-databases" class="md-nav__link">
+    Generate dbc file (canbus databases)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-send-and-receive-can-messages" class="md-nav__link">
+    Communication - send and receive can messages
   </a>
   
 </li>
@@ -399,25 +413,112 @@
               
                 
                 
-                <h1 id="apt-cacher-ng">Apt cacher ng</h1>
-<p>It is a package to create a local cache of the Debian mirrors. </p>
-<h2 id="server">Server</h2>
-<p>To get started you should create a server by installing the package:</p>
-<pre><code>apt install apt-cacher-ng
+                <h1 id="canbus-controller-area-network">CanBus - Controller Area Network</h1>
+<p>Is a standardized communication protocol designed to allow microcontrollers and other devices to communicate with each other.
+&nbsp;</p>
+<h2 id="installation">Installation:</h2>
+<p>pip install python-can</p>
+<p>pip install cantools
+&nbsp;
+&nbsp;</p>
+<h2 id="activation-on-jetson-tx2">Activation on jetson (TX2):</h2>
+<p>sudo modprobe can</p>
+<p>sudo modprobe can_raw</p>
+<p>sudo modprobe mttcan</p>
+<p>sudo ip link set can0 type can bitrate 250000 restart-ms 100 loopback</p>
+<p>sudo ip link set can0 up
+&nbsp;
+&nbsp;</p>
+<h2 id="generate-dbc-file-canbus-databases">Generate dbc file (canbus databases)</h2>
+<p>The dbc file can be generated as explained in <a href="https://www.csselectronics.com/screen/page/can-dbc-file-database-intro/language/en">intro to dbc</a>.
+Using a program named Kvaser Database editor, you can create a simple dbc file according to your own messages protocol. </p>
+<p>An easy explanation can be found <a href="https://www.youtube.com/watch?v=mAL1Xo2G9-4">here</a></p>
+<p>Simple example - my_cam.dbc:</p>
+<pre><code>VERSION &quot;&quot;
+
+NS_ :
+    CM_
+    BA_DEF_
+    BA_
+    BA_DEF_DEF_
+
+BS_:
+
+BU_:
+
+BO_ 50 TEST: 8 Vector_XXX
+    SG_ ThrottleSpeed : 0|8@1+ (0.125,0) [0|0] &quot;rpm_precent&quot; Vector_XXX
+
+BO_ 2566844926 CCVS1: 8 Vector_XXX
+    SG_ WheelBasedVehicleSpeed : 8|16@1+ (0.00390625,0) [0|250.996] &quot;km/h&quot; Vector_XXX
+
+CM_ BO_ 50 &quot;Electronic Engine Controller 1&quot;;
+CM_ SG_ 50 ThrottleSpeed &quot;Actual engine speed&quot;
 </code></pre>
-<p>change the cache directory in the configuration file:</p>
-<pre><code>vim /etc/apt-cacher-ng/acng.conf
+<p>&nbsp;
+&nbsp;</p>
+<h2 id="communication-send-and-receive-can-messages">Communication - send and receive can messages</h2>
+<pre><code>import sys
+import os
+import can
+from can.bus import BusState
+from threading import Thread, Event
+import logging
+import cantools
+import time
+
+log = logging.getLogger(__name__)
+
+class CanNode:
+    def __init__(self,db):
+    self.db = db
+
+    def send_encoded_message(self, bus, stop_event):
+        &quot;&quot;&quot;loop for sending encoded can messages&quot;&quot;&quot;
+        log.warn(&quot;Start sending a message every 1s&quot;)
+        start_time = time.time()
+        while not stop_event.is_set():
+            throttle_message = self.db.get_message_by_name('TEST')
+            data = throttle_message.encode({'ThrottleSpeed': 10})
+            msg = can.Message(arbitration_id = throttle_message.    frame_id, data = data, timestamp = time.time() -    start_time)
+            bus.send(msg)
+            log.warn(&quot;tx: {}&quot;.format(msg))
+            time.sleep(1)
+        log.warn(&quot;Stop sending messages)
+
+    def receive_encoded_message(self, bus, stop_event)
+        &quot;&quot;&quot;loop for receiving&quot;&quot;&quot;
+        log.warn(&quot;Start receiving can messages&quot;)
+        while not stop_event.is_set():
+            rx_msg = bus.recv(1)
+            if rx_msg is not None:
+                log.warn(&quot;rx: {}&quot;.format(rx_msg))
+                log.warn(&quot;decoded: {}&quot;.format(self.db.decode_message(rx_msg.arbitration_id, rx_msg.data)))
+        log.warn(&quot;Stop receiving messages&quot;)
+
+def main():
+    db = cantools.database.load_file('my_can.dbc')
+    can_node = CanNode(db)
+    with can.interface.Bus(bustype='socketcan', channel='can0', bitrate=250000) as bus:
+        stop_event = Event()
+        send_cyclic_thread = Thread(target = can_node.send_encoded_message, args=(bus, stop_event))
+        receive_thread = Thread(target = can_node.receive_encoded_message, args=(bus, stop_event))
+
+        send_cyclic_thread.start()
+        receive_thread.start()
+
+        try:
+            while True:
+                time.sleep(0)
+        except KeyboardInterrupt:
+            stop_event.set()
+            time.sleep(0.5)
+            exit(0)
+
+if __name__=='__main__':
+    sys.exit(main())
+
 </code></pre>
-<p>In the line of CacheDir choose your directory path.</p>
-<h2 id="client">Client</h2>
-<p>Define the client configuration in order to know about the proxy:</p>
-<pre><code>echo 'Acquire::http { Proxy &quot;http://&lt;server_ip&gt;:3142&quot;; }' | sudo tee -a /etc/apt/apt.conf.d/proxy
-</code></pre>
-<h2 id="check-your-cacher">Check your cacher:</h2>
-<p>In the client machine: </p>
-<p><code>sudo apt update
-sudo apt install &lt;package_name&gt;</code></p>
-<p>you should be able to see the files in the server machine (according to CacheDir in the acng.conf file).</p>
                 
               
               
