@@ -1,4 +1,5 @@
-# CanBus - Controller Area Network
+# CanBus
+CAN = Controller Area Network
 
 Is a standardized communication protocol designed to allow microcontrollers and other devices to communicate with each other.
 &nbsp;
@@ -57,6 +58,8 @@ CM_ SG_ 50 ThrottleSpeed "Actual engine speed"
 &nbsp;
 
 ## Communication - send and receive can messages
+Example - save as can_node.py
+
 ```
 import sys
 import os
