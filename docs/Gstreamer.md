@@ -204,3 +204,69 @@ def main():
 if __name__ =='__main__':
     sys.exit(main())
 ```
+
+## Pipeline with factory
+
+There are two ways to create a pipeline. The first one, as showed in the example above (Dynamic compositor streaming)
+with *parse_launch* and the second with *factory*.
+
+Here I will present an example for creating pipeline with factory:
+
+```
+import sys
+import gi
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst, GLib
+import traceback
+
+# Initialize gstreamer
+Gst.init(sys.argv)
+
+def on_message(bus: Gst.Bus, message: Gst.Message, loop: GLib.MainLoop):
+    mtype = message.type
+    if mtype == Gst.MessageType.EOS:
+        print("End of stream")
+        loop.quit()
+
+    elif mtype == Gst.MessageType.ERROR:
+        err, debug = message.parse_error()
+        print(err, debug)
+        loop.quit()
+    elif mtype == Gst.MessageType.WARNING:
+        err, debug = message.parse_warning()
+        print(err, debug)
+    return True
+
+pipeline = Gst.Pipeline()
+
+# Creates element by name
+src = Gst.ElementFactory.make("videotestsrc", "videotestsrc_name")
+src.set_property("num-buffers", 50)
+src.set_property("pattern", "ball")
+sink = Gst.ElementFactory.make("autovideosink")
+
+pipeline.add(src) # add elements to the pipeline
+pipeline.add(sink)
+src.link(sink) # link the elements
+
+bus = pipeline.get_bus()
+
+# Start pipeline
+pipeline.set_state(Gst.State.PLAYING)
+
+# Init GObject loop to handle Gstreamer Bus Events
+loop = GLib.MainLoop()
+
+bus.add_signal_watch() # allow bus to emit messages to main thread
+bus.connect("message", on_message, loop) # Add handler to specific signal
+
+try:
+    loop.run()
+except Exception:
+    traceback.print_exc()
+    loop.quit()
+
+# Stop Pipeline
+pipeline.set_state(Gst.State.NULL)
+del pipeline
+```
